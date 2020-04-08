@@ -39,7 +39,7 @@ class BookSearchResults extends React.Component{
                                <td>{book.id}</td>
                                <td>{book.title}</td>
                                <td><ol>{book.authors.map((author)=>{
-                                   return (<li>{author}</li>)
+                                   return (<li key={book.id+author}>{author}</li>)
                                })}</ol></td>
                            </tr>
                        );

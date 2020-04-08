@@ -29,6 +29,11 @@ class BookSearchBar extends React.Component{
                                     this.setState(st);
                                     }
                                 }
+                                onKeyDown={(e)=>{
+                                    if(e.key === 'Enter'){
+                                        BookSearchActions.search(this.state.title, this.state.author);
+                                    }
+                                }}
                             /></td>
                     </tr>
 
