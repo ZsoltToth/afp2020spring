@@ -1,4 +1,6 @@
 import {Dispatcher} from 'flux';
+import axios from 'axios';
+import store from './stores/BookStore'
 
 class BookDispatcher extends Dispatcher{
 
@@ -15,7 +17,12 @@ dispatcher.register((payload)=>{
     if(payload.action.actionType !== 'BOOK_SEARCH'){
         return;
     }
-    console.log(payload.action.payload);
+    axios.get('/books').then((resp)=>{
+       store._books = resp.data.filter((book)=>{
+           return book.title.includes(payload.action.payload.title)
+       });
+       store.emitChange();
+    });
 });
 
 export default dispatcher;
