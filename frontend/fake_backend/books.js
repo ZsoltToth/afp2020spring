@@ -26,4 +26,4 @@ for(let i = 0; i < BOOK_CNT; i++){
     books.push(generateBook(i));
 }
 
-fs.writeFile('books.json',JSON.stringify(books), (err)=>{});
+fs.writeFile('books.json',JSON.stringify({books : books}), (err)=>{});
